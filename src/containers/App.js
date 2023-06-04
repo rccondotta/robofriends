@@ -6,10 +6,10 @@ import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import ErrorBoundry from '../components/ErrorBoundry';
-import Header from '../components/Header';
 
 import './App.css';
 
+// parameter state comes from index.js provider store state(rootReducers)
 const mapStateToProps = (state) => {
   return {
     searchField: state.searchRobots.searchField,
@@ -18,20 +18,16 @@ const mapStateToProps = (state) => {
   }
 }
 
+// dispatch the DOM changes to call an action. note mapStateToProps returns object, mapDispatchToProps returns function
+// the function returns an object then uses connect to change the data from redecers.
 const mapDispatchToProps = (dispatch) => {
   return {
     onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
-    onRequestRobots: () => requestRobots(dispatch)
+    onRequestRobots: () => dispatch(requestRobots())
   }
 }
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      count: 1
-    }
-  }
   componentDidMount() {
     this.props.onRequestRobots();
   }
@@ -43,7 +39,7 @@ class App extends Component {
     })
     return (
       <div className='tc'>
-        <Header count={this.state.count}/>
+        <h1 className='f1'>RoboFriends</h1>
         <SearchBox searchChange={onSearchChange}/>
         <Scroll>
           { isPending ? <h1>Loading</h1> :
@@ -57,4 +53,5 @@ class App extends Component {
   }
 }
 
+// action done from mapDispatchToProps will channge state from mapStateToProps
 export default connect(mapStateToProps, mapDispatchToProps)(App)
