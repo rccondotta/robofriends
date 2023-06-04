@@ -1,5 +1,5 @@
 # robofriends-pwa
-PWA branch
+adding PWA capabilities to a react app
 
 To run the project:
 
