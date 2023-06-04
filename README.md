@@ -1,10 +1,5 @@
-# robofriends
-React + Redux
+# robofriends-hooks
 
-To run the project:
+Robofriends with Hooks!
 
-1. Clone this repo
-2. Run `npm install`
-3. Run `npm start`
-
-*visit https://zerotomastery.io/ for more*
+*visist https://zerotomastery.io/ for more*
